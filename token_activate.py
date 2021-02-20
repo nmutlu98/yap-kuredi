@@ -63,32 +63,17 @@ def getCustomerList():
 
 
 
-def getAccountTransaction():
+def getAccountTransaction(account_id):
     url = "https://api.yapikredi.com.tr/api/currentAccounts/account/v1/accountTransactionList"
 
+    payload="{\r\n  \"accountNo\": \" "+ str(account_id) +"\",\r\n  \"ccy\": \"TL\",\r\n  \"continuousSearch\": \"true\",\r\n  \"descSort\": \"true\",\r\n  \"startDate\": \"2017-10-01\",\r\n  \"endDate\": \"2017-11-01\",\r\n  \"noOfPage\": \"1\",\r\n  \"noOfRecs\": \"5\",\r\n  \"postNo\": \"0\"\r\n}"
     headers = {
-        'Authorization': auth,
-        'Content-Type': 'application/json'
+    'Authorization': auth,
+    'Content-Type': 'application/json'
     }
-    payload = {
-    "accountNo": "10704092",
-    "ccy": "TL",
-    "continuousSearch": "true",
-    "descSort": "true",
-    "startDate": "2017-10-01",
-    "endDate": "2017-11-01",
-    "noOfPage": "1",
-    "noOfRecs": "5",
-    "postNo": "0"}
 
     response = requests.request("POST", url, headers=headers,data = payload)
     return response.text
-
-print(getAccountTransaction())
-
-
-
-
 
 
 
