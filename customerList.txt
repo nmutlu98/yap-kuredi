@@ -1,0 +1,69 @@
+{"response": {"return": {"customerList": [
+    {
+        "creditCards": {"creditCardNumber": "1742436264867769"},
+        "accounts": [
+            {
+                "accountNumber": "10704728",
+                "currencyCode": "TL"
+            },
+            {
+                "accountNumber": "10704729",
+                "currencyCode": "TL"
+            },
+            {
+                "accountNumber": "10704730",
+                "currencyCode": "EUR"
+            },
+            {
+                "accountNumber": "10704731",
+                "currencyCode": "USD"
+            }
+        ],
+        "customerNumber": "10704090"
+    },
+    {
+        "creditCards": {"creditCardNumber": "4412148086499233"},
+        "accounts": [
+            {
+                "accountNumber": "10704732",
+                "currencyCode": "TL"
+            },
+            {
+                "accountNumber": "10704733",
+                "currencyCode": "TL"
+            },
+            {
+                "accountNumber": "10704734",
+                "currencyCode": "EUR"
+            },
+            {
+                "accountNumber": "10704735",
+                "currencyCode": "USD"
+            }
+        ],
+        "customerNumber": "10704091"
+    },
+    {
+        "creditCards": {"creditCardNumber": "6245207380978263"},
+        "accounts": [
+            {
+                "accountNumber": "10704737",
+                "currencyCode": "TL"
+            },
+            {
+                "accountNumber": "10704738",
+                "currencyCode": "EUR"
+            },
+            {
+                "accountNumber": "10704739",
+                "currencyCode": "USD"
+            },
+            {
+                "accountNumber": "10704736",
+                "currencyCode": "TL"
+            }
+        ],
+        "customerNumber": "10704092"
+    }
+]}}}
+
