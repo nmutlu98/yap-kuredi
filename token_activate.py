@@ -37,11 +37,12 @@ def createData():
     url = "https://api.yapikredi.com.tr/api/simulationdata/v1/createTestData"
     response = requests.request("GET", url, headers=headers, data=payload)
     print(response.text)
-
+"""
 def resetData():
     url = "https://api.yapikredi.com.tr/api/simulationdata/v1/resetTestData"
     response = requests.request("GET", url, headers=headers, data=payload)
     print(response.text)
+"""
 
 def listData():
     url = "https://api.yapikredi.com.tr/api/simulationdata/v1/listTestData"
