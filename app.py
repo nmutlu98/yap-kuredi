@@ -113,6 +113,14 @@ def add_customer():
     except Exception as e:
 	    return(str(e))
 
+@app.route("/getCustomerInfoByCustomerNumber/<customer_number>")
+def getCustomerInfoByCustomerNumber(customer_number):
+    try:
+        customers=Customer.query.filter_by(customer_number)
+        return  jsonify([e.serialize for e in customers])
+    except Exception as e:
+	    return(str(e))
+
 @app.route("/addPayment")
 def add_payment():
     id = request.args.get('id')
