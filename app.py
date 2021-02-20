@@ -1,6 +1,9 @@
 from flask import Flask
 from datetime import datetime
+from flask import jsonify
+
 app = Flask(__name__)
+
 
 @app.route('/')
 def homepage():
@@ -12,6 +15,11 @@ def homepage():
 
     <img src="http://loremflickr.com/600/400" />
     """.format(time=the_time)
+
+
+@app.route('/get')
+def get():
+    return jsonify({"hello": "world"})
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
