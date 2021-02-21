@@ -202,7 +202,7 @@ def get_group_requests(customer_id):
 @cross_origin()
 @app.route("/getTransactions/<account_id>")
 def get_transactions_of_account(account_id):
-    response = jsonify("{\"data\": " + getAccountTransaction(account_id) + "}")
+    response = jsonify(getAccountTransaction(account_id))
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 @cross_origin()
