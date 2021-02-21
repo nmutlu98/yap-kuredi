@@ -3,6 +3,7 @@ from datetime import datetime
 from flask import request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import os
+from token_activate import getAccountTransaction
 
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
@@ -176,6 +177,10 @@ def get_group_requests(customer_id):
         return  jsonify([e.serialize() for e in requests])
     except Exception as e:
 	    return(str(e))
+
+@app.route("/getTransactions/<account_id>")
+def get_transactions_of_account(account_id):
+    return getAccountTransaction(account_id)
 
 @app.route("/getPaymentsByRequest/<request_id>")
 def get_payments_by_request(request_id):
