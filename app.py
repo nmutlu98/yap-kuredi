@@ -95,7 +95,9 @@ def homepage():
 @cross_origin()
 @app.route('/get')
 def get():
-    return jsonify({"hello": "world"})
+    response = jsonify({"hello": "world"})
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 @cross_origin()
 @app.route("/addCustomer")
@@ -112,7 +114,9 @@ def add_customer():
         )
         db.session.add(customer)
         db.session.commit()
-        return "Added"
+        response = jsonify({"success" : "true"})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
     except Exception as e:
 	    return(str(e))
 
@@ -121,7 +125,9 @@ def add_customer():
 def getCustomerInfoByCustomerNumber(customer_number):
     try:
         customers=Customer.query.filter_by(customer_number)
-        return  jsonify([e.serialize for e in customers])
+        response = jsonify([e.serialize for e in customers])
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
     except Exception as e:
 	    return(str(e))
 
@@ -142,7 +148,9 @@ def add_payment():
         )
         db.session.add(payment)
         db.session.commit()
-        return "Added"
+        response = jsonify({"success" : "true"})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
     except Exception as e:
 	    return(str(e))
 
@@ -163,7 +171,9 @@ def add_request():
         )
         db.session.add(req)
         db.session.commit()
-        return "Added"
+        response = jsonify({"success" : "true"})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
     except Exception as e:
 	    return(str(e))
 
@@ -172,7 +182,9 @@ def add_request():
 def get_all_customers():
     try:
         customers=Customer.query.all()
-        return  jsonify([e.serialize() for e in customers])
+        response = jsonify([e.serialize() for e in customers])
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
     except Exception as e:
 	    return(str(e))
 
@@ -181,21 +193,26 @@ def get_all_customers():
 def get_group_requests(customer_id):
     try:
         requests=Request.query.filter_by(customer_id=customer_id)
-        return  jsonify([e.serialize() for e in requests])
+        response = jsonify([e.serialize() for e in requests])
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
     except Exception as e:
 	    return(str(e))
 
 @cross_origin()
 @app.route("/getTransactions/<account_id>")
 def get_transactions_of_account(account_id):
-    return getAccountTransaction(account_id)
-
+    response = jsonify(getAccountTransaction(account_id))
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 @cross_origin()
 @app.route("/getPaymentsByRequest/<request_id>")
 def get_payments_by_request(request_id):
     try:
         requests=Payment.query.filter_by(request_id=request_id)
-        return  jsonify([e.serialize() for e in requests])
+        response = jsonify([e.serialize() for e in requests])
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
     except Exception as e:
 	    return(str(e))
 
