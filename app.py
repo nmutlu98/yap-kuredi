@@ -4,6 +4,7 @@ from flask import request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import os
 from token_activate import getAccountTransaction
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
@@ -83,7 +84,7 @@ class Request(db.Model):
             'id' : self.id,
             'people_list': self.people_list
         }
-
+@cross_origin()
 @app.route('/')
 def homepage():
    
@@ -91,11 +92,12 @@ def homepage():
     nice
     """
 
-
+@cross_origin()
 @app.route('/get')
 def get():
     return jsonify({"hello": "world"})
 
+@cross_origin()
 @app.route("/addCustomer")
 def add_customer():
     id = request.args.get('customerId')
@@ -114,6 +116,7 @@ def add_customer():
     except Exception as e:
 	    return(str(e))
 
+@cross_origin()
 @app.route("/getCustomerInfoByCustomerNumber/<customer_number>")
 def getCustomerInfoByCustomerNumber(customer_number):
     try:
@@ -122,6 +125,7 @@ def getCustomerInfoByCustomerNumber(customer_number):
     except Exception as e:
 	    return(str(e))
 
+@cross_origin()
 @app.route("/addPayment")
 def add_payment():
     id = request.args.get('id')
@@ -142,6 +146,7 @@ def add_payment():
     except Exception as e:
 	    return(str(e))
 
+@cross_origin()
 @app.route("/addRequest")
 def add_request():
     customer_id = request.args.get('customerId')
@@ -162,6 +167,7 @@ def add_request():
     except Exception as e:
 	    return(str(e))
 
+@cross_origin()
 @app.route("/getallcustomers")
 def get_all_customers():
     try:
@@ -170,6 +176,7 @@ def get_all_customers():
     except Exception as e:
 	    return(str(e))
 
+@cross_origin()
 @app.route("/getGroupRequestsByCustomerId/<customer_id>")
 def get_group_requests(customer_id):
     try:
@@ -178,10 +185,12 @@ def get_group_requests(customer_id):
     except Exception as e:
 	    return(str(e))
 
+@cross_origin()
 @app.route("/getTransactions/<account_id>")
 def get_transactions_of_account(account_id):
     return getAccountTransaction(account_id)
 
+@cross_origin()
 @app.route("/getPaymentsByRequest/<request_id>")
 def get_payments_by_request(request_id):
     try:
