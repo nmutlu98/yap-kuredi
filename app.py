@@ -230,7 +230,6 @@ def get_payments_by_request(request_id):
         response_data = {"name": "SIMAR SARIYER MARKET ISTANBUL TR", "amount":request[0].amount , "total_paid": total_paid,
                          "transfers": {"Cem": 10}, "noTransfers": {"Emre": 20, "Necla": 30}}
         response = jsonify(response_data)
-        print("hello")
         response.headers.add("Access-Control-Allow-Origin", "*")
         return response
     except Exception as e:
