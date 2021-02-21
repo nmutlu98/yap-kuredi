@@ -35,7 +35,7 @@ def listData():
 
 def getCustomerList():
     # reads from txt file
-    file = open("customerList.txt", "r")
+    file = open("C:\dev\yapikuredi\customerList.txt", "r")
     contents = file.read()
     customerList = ast.literal_eval(contents)
     file.close()
