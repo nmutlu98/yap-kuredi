@@ -217,5 +217,5 @@ def get_payments_by_request(request_id):
 	    return(str(e))
 
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)
+    app.run(ssl_context='adhoc')
 
