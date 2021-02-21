@@ -64,9 +64,8 @@ def getAccountTransaction(accNo):
     payload="{\r\n  \"accountNo\": \""+ accNo +"\",\r\n  \"ccy\": \"TL\",\r\n  \"continuousSearch\": \"true\",\r\n  \"descSort\": \"true\",\r\n  \"startDate\": \"2013-10-01\",\r\n  \"endDate\": \"2021-02-21\",\r\n  \"noOfPage\": \"1\",\r\n  \"noOfRecs\": \"5\",\r\n  \"postNo\": \"0\"\r\n}"
 
     response = requests.request("POST", url, headers=headers,data = payload)
-    return response.text
+    return jsonify(response.json()['response']['return']['list'])
 
-#print(getAccountTransaction())
 
 def getCustomerbyNumber():
     url =  "https://api.yapikredi.com.tr/api/customers/v1/customerInformationByCustomerNumber"
@@ -101,8 +100,7 @@ def remmitanceFromCustomerNumber(fromCus,toAcc,amount):
 
 
 
-print(remmitanceFromCustomerNumber("10704090","10704732","1"))
-print(getAccountTransaction("10704732"))
+print(getAccountTransaction("10704728"))
 
 #accno2 = 10704737
 
