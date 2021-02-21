@@ -56,6 +56,7 @@ def getDatabaseCustomerList():
 print(getDatabaseCustomerList())
 
 def getAccountTransaction(accNo):
+    auth  = "Bearer " + getToken()
     url = "https://api.yapikredi.com.tr/api/currentAccounts/account/v1/accountTransactionList"
     headers = {
         'Authorization': auth,
